@@ -8,6 +8,8 @@ const morgan = require('morgan');
 const logger = require('./logger');
 
 const app = express();
+app.set('view engine', 'pug');
+app.set('views', './views'); //default store views
 
 app.use(express.json());
 app.use(helmet());
@@ -31,7 +33,7 @@ const genres = [
 ];
 
 app.get('/api/genres', (req, res) => {
-    res.send(genres);
+    res.render('index', {title: 'Vidly', h1: 'Hello'});
 });
 
 app.get('/api/genres/:id', (req, res) => {
