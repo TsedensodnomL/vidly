@@ -10,8 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^16.1.8",
+    "config": "^3.2.4",
+    "debug": "^4.1.1",
     "express": "^4.17.1",
-    "mongoose": "^5.8.0"
+    "helmet": "^3.21.2",
+    "mongoose": "^5.8.0",
+    "morgan": "^1.9.1",
+    "pug": "^2.0.4"
   },
   "devDependencies": {
     "jshint": "^2.10.3"

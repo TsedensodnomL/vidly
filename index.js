@@ -1,9 +1,28 @@
-
 const express = require('express');
+const config = require('config');
+const suDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
 const Joi = require('@hapi/joi');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const logger = require('./logger');
+
 const app = express();
 
 app.use(express.json());
+app.use(helmet());
+//if it's in development stage
+if(app.get('env') === 'development'){ 
+    app.use(morgan('tiny'));    
+}
+app.use(express.urlencoded({extended: true}));
+app.use(express.static('public')); //static files like html 
+app.use(logger); //custom middleware
+
+//Config 
+suDebugger('Name ' + config.get('name')); //DEBUG=app:startup nodemon index.js
+//console.log('Name ' + config.get('mail.password'));
+
 
 const genres = [
     { id: 1, name: 'Horror'},
